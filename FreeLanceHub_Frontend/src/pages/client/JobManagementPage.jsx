@@ -20,7 +20,7 @@ export default function JobManagementPage() {
   }, []);
 
   async function load() {
-    // TODO (API): Replace with fetch("/api/jobs") when Spring Boot API is ready
+    // TODO (API): Replace with fetch("/api/jobs")
     const data = await getJobs();
     setJobs(data);
   }

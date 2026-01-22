@@ -6,7 +6,7 @@ import ProposalForm from "../../components/proposals/ProposalForm";
 import { initMockDb, getJobs, getProposals, submitProposal, updateProposal, withdrawProposal, updateJob } from "../../services/mockApi";
 
 export default function ProposalsBiddingPage() {
-  const [tab, setTab] = useState("freelancer"); // "freelancer" | "client"
+  const [tab, setTab] = useState("freelancer");
   const [jobs, setJobs] = useState([]);
   const [proposals, setProposals] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
