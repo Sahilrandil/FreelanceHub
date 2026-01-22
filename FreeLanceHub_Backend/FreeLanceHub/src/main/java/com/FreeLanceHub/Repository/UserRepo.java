@@ -1,0 +1,30 @@
+package com.FreeLanceHub.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.FreeLanceHub.Entity.Role;
+import com.FreeLanceHub.Entity.User;
+
+@Repository
+public interface UserRepo extends JpaRepository<User, Long> {
+
+	 
+
+	    @Modifying
+	    @Query(value = "UPDATE users SET name = ?, email = ?, role = ? WHERE id = ?", nativeQuery = true)
+	    int updateUser(String name, String email, Role role, Long id);
+
+	    @Query(value = "SELECT * FROM users WHERE user_name = ?", nativeQuery = true)
+	    User findUserByUserName(String userName);
+
+	    @Query(value = "SELECT * FROM users WHERE email = ?", nativeQuery = true)
+	    User findUserByEmail(String email);
+
+	    @Modifying
+	    @Query(value = "UPDATE users SET enabled = ? WHERE id = ?", nativeQuery = true)
+	    int updateUserStatus(Long id, boolean enabled);
+
+}
