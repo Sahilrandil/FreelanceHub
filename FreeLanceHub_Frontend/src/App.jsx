@@ -3,6 +3,8 @@ import "./App.css";
 import "./styles.css";
 
 import LandingPage from "./pages/LandingPage";
+import FreelancerProfile from "./pages/FreelancerProfile";
+import SearchDiscovery from "./pages/SearchDiscovery";
 
 // Client
 import JobManagementPage from "./pages/client/JobManagementPage";
@@ -24,6 +26,10 @@ export default function App() {
       {/* Freelancer */}
       <Route path="/discover" element={<DiscoverPage />} />
       <Route path="/freelancer/proposals" element={<MyProposalsPage />} />
+
+      {/* Profile Page */}
+      <Route path="/search" element={<SearchDiscovery />} />
+      <Route path="/profile" element={<FreelancerProfile />} />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
