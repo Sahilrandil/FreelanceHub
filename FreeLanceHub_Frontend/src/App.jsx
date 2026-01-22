@@ -1,22 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Navigate } from "react-router-dom";
+import "./App.css";
 import "./styles.css";
-import Navbar from "./components/others/Navbar";
-import HeroSection from "./components/others/HeroSection";
-import TrustedBy from "./components/others/TrustedBy";
-import Footer from "./components/others/Footer";
+
+import LandingPage from "./pages/LandingPage";
+
+// Client
+import JobManagementPage from "./pages/client/JobManagementPage";
+import ClientInboxPage from "./pages/client/ClientInboxPage";
+
+// Freelancer
+import DiscoverPage from "./pages/freelancer/DiscoverPage";
+import MyProposalsPage from "./pages/freelancer/MyProposalsPage";
 
 export default function App() {
   return (
-    <>
-      <Navbar />
-      <HeroSection />
-      <TrustedBy />
-      <Footer/>
-    </>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+
+      {/* Client */}
+      <Route path="/client/jobs" element={<JobManagementPage />} />
+      <Route path="/client/inbox" element={<ClientInboxPage />} />
+
+      {/* Freelancer */}
+      <Route path="/discover" element={<DiscoverPage />} />
+      <Route path="/freelancer/proposals" element={<MyProposalsPage />} />
+
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }
-
-
