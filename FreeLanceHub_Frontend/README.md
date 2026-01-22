@@ -14,3 +14,19 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+
+
+## Routes
+### Client
+- `/client/jobs` — Job Posting & Management (Create / Edit / Delete / Status / Skills / Budget / Duration / Visibility)
+- `/client/inbox` — Proposals Inbox (See proposal counts per job, Accept / Reject proposals)
+
+### Freelancer
+- `/discover` — Search & Discovery (Browse jobs, click Apply)
+- `/freelancer/proposals` — My Proposals (Track status, Edit / Withdraw until accepted)
+
+## API Integration (Spring Boot)
+All data is currently loaded from LocalStorage via data.js:
+- `src/services/mockApi.js`
