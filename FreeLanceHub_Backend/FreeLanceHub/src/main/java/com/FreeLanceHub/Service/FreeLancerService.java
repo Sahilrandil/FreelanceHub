@@ -14,6 +14,7 @@ public interface FreeLancerService {
 	public List<JobDto> browseJobs();
 
 	// Proposal submitProposal(Long freelancerId, ProposalRequest request);
+	//search freelancer by skills
 
 	public List<JobDto> getAssignedJobs(Long freelancerId);
 
