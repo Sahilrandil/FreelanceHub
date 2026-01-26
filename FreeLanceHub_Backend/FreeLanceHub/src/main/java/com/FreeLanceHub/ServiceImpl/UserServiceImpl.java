@@ -40,17 +40,27 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean saveUser(User user) {
-		return userDao.saveUser(user);
+	public UserDto saveUser(UserDto dto) {
+		  User user = new User();
+	        user.setUserName(dto.getUserName());
+	        user.setName(dto.getName());
+	        user.setEmail(dto.getEmail());
+	        user.setPassword(dto.getPassword()); // encode later
+	        user.setRole(dto.getRole());
+	        user.setEnabled(true);
+
+	        User saved = userDao.saveUser(user);
+	        return mapToDto(saved);
 	}
 
 	// ---------- helper ----------
 	private UserDto mapToDto(User user) {
-		UserDto dto = new UserDto();
-
-		dto.setName(user.getName());
-		dto.setEmail(user.getEmail());
-		dto.setRole(user.getRole());
-		return dto;
+	    UserDto dto = new UserDto();
+	    dto.setUserName(user.getUserName());
+	    dto.setName(user.getName());
+	    dto.setEmail(user.getEmail());
+	    dto.setRole(user.getRole());
+	    dto.setEnabled(user.isEnabled());
+	    return dto;
 	}
 }

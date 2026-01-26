@@ -2,15 +2,20 @@ package com.FreeLanceHub.Dto;
 
 import com.FreeLanceHub.Entity.BaseEntity;
 import com.FreeLanceHub.Entity.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto extends BaseEntity {
 
 	private String userName;
 	private String name;
 	private String email;
-	private String password;
 	private Role role;
 	private boolean enabled;
+
+	@JsonIgnore
+	private String password;
 
 	public UserDto() {
 		super();

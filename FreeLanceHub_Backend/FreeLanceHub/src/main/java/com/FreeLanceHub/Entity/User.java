@@ -1,6 +1,7 @@
 package com.FreeLanceHub.Entity;
 
-import jakarta.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -9,32 +10,32 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
-	
-	private String userName; 
-    private String name;
-    private String email;
-    private String password;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role; 
-    private boolean enabled;
+
+	private String userName;
+	private String name;
+	private String email;
+	@JsonIgnore
+	private String password;
+
+	@Enumerated(EnumType.STRING)
+	private Role role;
+
+	private boolean enabled;
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String userName,String name, String email, String password, Role role, boolean enabled) {
+	public User(String userName, String name, String email, String password, Role role, boolean enabled) {
 		super();
-		this.userName=userName;
+		this.userName = userName;
 		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.role = role;
 		this.enabled = enabled;
 	}
-	
-	
 
 	public String getUserName() {
 		return userName;
@@ -89,7 +90,5 @@ public class User extends BaseEntity {
 		return "User [userName=" + userName + ", name=" + name + ", email=" + email + ", password=" + password
 				+ ", role=" + role + ", enabled=" + enabled + "]";
 	}
-    
-    
-    
+
 }

@@ -2,7 +2,6 @@ package com.FreeLanceHub.DaoImpl;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +11,6 @@ import com.FreeLanceHub.Repository.UserRepo;
 
 import jakarta.transaction.Transactional;
 
-
 @Repository
 @Transactional
 public class UserDaoImpl implements UserDao {
@@ -21,9 +19,10 @@ public class UserDaoImpl implements UserDao {
 	private UserRepo userRepo;
 
 	@Override
-	public boolean saveUser(User user) {
-		userRepo.save(user);
-		return true;
+	public User saveUser(User user) {
+		User userdb=userRepo.save(user);
+		 
+		return userdb;
 	}
 
 	@Override
@@ -49,7 +48,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getAllUser() {
-		return userRepo.findAll();
+		return userRepo.getAllUser();
 	}
 
 	@Override

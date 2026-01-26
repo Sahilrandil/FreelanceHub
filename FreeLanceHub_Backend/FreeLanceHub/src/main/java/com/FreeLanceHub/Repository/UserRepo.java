@@ -1,5 +1,7 @@
 package com.FreeLanceHub.Repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -26,5 +28,8 @@ public interface UserRepo extends JpaRepository<User, Long> {
 	    @Modifying
 	    @Query(value = "UPDATE users SET enabled = ? WHERE id = ?", nativeQuery = true)
 	    int updateUserStatus(Long id, boolean enabled);
+	    
+	    @Query(value = "select * from users", nativeQuery = true)
+	    List<User> getAllUser();
 
 }

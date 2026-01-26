@@ -1,0 +1,5 @@
+package com.FreeLanceHub.Entity;
+
+public enum NotificationType {
+	JOB_POSTED, PROPOSAL_SUBMITTED, PROPOSAL_ACCEPTED, PAYMENT_RELEASED, MESSAGE_RECEIVED
+}

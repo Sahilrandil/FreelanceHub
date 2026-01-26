@@ -15,7 +15,7 @@ public interface UserDao {
 
 	public void updateUserStatus(Long userId, boolean enabled);
 
-	public boolean saveUser(User user);
+	public User saveUser(User user);
 
 	public boolean updateUser(Long id, User user);
 

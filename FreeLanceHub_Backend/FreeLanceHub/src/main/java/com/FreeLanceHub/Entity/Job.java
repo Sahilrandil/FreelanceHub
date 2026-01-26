@@ -4,81 +4,97 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Job extends BaseEntity {
 
-	@ManyToOne
-	private User client;
+	 @ManyToOne
+	    private User client;
 
-	private String title;
-	private String description;
-	private Double budget;
+	    @ManyToOne
+	    @JoinColumn(name = "assigned_freelancer_id")
+	    private User assignedFreelancer; // <--- Add this
 
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
-	private JobStatus status;
+	    private String title;
+	    private String description;
+	    private Double budget;
 
-	public Job() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	    @Enumerated(EnumType.STRING)
+	    @Column(nullable = false)
+	    private JobStatus status;
 
-	public Job(User client, String title, String description, Double budget, JobStatus status) {
-		super();
-		this.client = client;
-		this.title = title;
-		this.description = description;
-		this.budget = budget;
-		this.status = status;
-	}
+		public Job() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
 
-	public User getClient() {
-		return client;
-	}
+		public Job(User client, User assignedFreelancer, String title, String description, Double budget,
+				JobStatus status) {
+			super();
+			this.client = client;
+			this.assignedFreelancer = assignedFreelancer;
+			this.title = title;
+			this.description = description;
+			this.budget = budget;
+			this.status = status;
+		}
 
-	public void setClient(User client) {
-		this.client = client;
-	}
+		public User getClient() {
+			return client;
+		}
 
-	public String getTitle() {
-		return title;
-	}
+		public void setClient(User client) {
+			this.client = client;
+		}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+		public User getAssignedFreelancer() {
+			return assignedFreelancer;
+		}
 
-	public String getDescription() {
-		return description;
-	}
+		public void setAssignedFreelancer(User assignedFreelancer) {
+			this.assignedFreelancer = assignedFreelancer;
+		}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+		public String getTitle() {
+			return title;
+		}
 
-	public Double getBudget() {
-		return budget;
-	}
+		public void setTitle(String title) {
+			this.title = title;
+		}
 
-	public void setBudget(Double budget) {
-		this.budget = budget;
-	}
+		public String getDescription() {
+			return description;
+		}
 
-	public JobStatus getStatus() {
-		return status;
-	}
+		public void setDescription(String description) {
+			this.description = description;
+		}
 
-	public void setStatus(JobStatus status) {
-		this.status = status;
-	}
+		public Double getBudget() {
+			return budget;
+		}
 
-	@Override
-	public String toString() {
-		return "Job [client=" + client + ", title=" + title + ", description=" + description + ", budget=" + budget
-				+ ", status=" + status + "]";
-	}
-	
+		public void setBudget(Double budget) {
+			this.budget = budget;
+		}
+
+		public JobStatus getStatus() {
+			return status;
+		}
+
+		public void setStatus(JobStatus status) {
+			this.status = status;
+		}
+
+		@Override
+		public String toString() {
+			return "Job [client=" + client + ", assignedFreelancer=" + assignedFreelancer + ", title=" + title
+					+ ", description=" + description + ", budget=" + budget + ", status=" + status + "]";
+		}
+	    
+	 
 	
 }

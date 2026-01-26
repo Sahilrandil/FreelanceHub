@@ -18,5 +18,5 @@ public interface UserService {
 
 	public void updateUserStatus(Long userId, boolean enabled);
 
-	public boolean saveUser(User user);
+	public UserDto saveUser(UserDto dto);
 }
